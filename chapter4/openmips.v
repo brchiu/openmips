@@ -73,7 +73,7 @@ module openmips(
 
     regfile regfile0(
         .clk(clk), .rst(rst),
-        .we(wb_reg_i), .waddr(wb_wd_i), .wdata(wb_wdata_i), 
+        .we(wb_wreg_i), .waddr(wb_wd_i), .wdata(wb_wdata_i), 
         .re1(reg1_read), .raddr1(reg1_addr), .rdata1(reg1_data),
         .re2(reg2_read), .raddr2(reg2_addr), .rdata2(reg2_data)
     );
@@ -83,7 +83,7 @@ module openmips(
 
         .id_aluop(id_aluop_o), .id_alusel(id_alusel_o),
         .id_reg1(id_reg1_o), .id_reg2(id_reg2_o),
-        .id_wd(id_wd_o), .id_wreg(id_reg_o),
+        .id_wd(id_wd_o), .id_wreg(id_wreg_o),
 
         .ex_aluop(ex_aluop_i), .ex_alusel(ex_alusel_i),
         .ex_reg1(ex_reg1_i), .ex_reg2(ex_reg2_i),

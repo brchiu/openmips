@@ -58,7 +58,7 @@ module id(
                 `EXE_ORI: begin
                     wreg_o      <= `WriteEnable;
                     aluop_o     <= `EXE_OR_OP;
-                    alusel_o    <= `EXE_RES_NOP;
+                    alusel_o    <= `EXE_RES_LOGIC;
                     reg1_read_o <= 1'b1;
                     reg2_read_o <= 1'b0;
                     imm         <= {16'h0, inst_i[15:0]};
@@ -83,7 +83,6 @@ module id(
             reg1_o <= `ZeroWord;
         end
     end
-
 
     always @(*) begin
         if (rst == `RstEnable) begin
