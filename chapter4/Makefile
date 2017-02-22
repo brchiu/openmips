@@ -22,7 +22,7 @@ inst_rom.bin: inst_rom.om
 	$(OBJCOPY) -O binary $< $@
 
 inst_rom.data: inst_rom.bin
-	# bin2mem.exe -f $< -o $@
+	bin2mem -f $< -o $@
 
 clean:
-	rm -rf *.o *.om *.bin # *.data
+	rm -rf *.o *.om *.bin *.data

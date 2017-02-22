@@ -1,3 +1,6 @@
 transcript
 *.wlf
+*.o
+*.om
+*.bin
 work/
