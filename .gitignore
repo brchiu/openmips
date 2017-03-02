@@ -3,4 +3,5 @@ transcript
 *.o
 *.om
 *.bin
+chapter5/inst_rom.S
 work/
