@@ -12,15 +12,7 @@ export CROSS_COMPILE
 
 all: inst_rom.data
 
-inst_rom1: inst_rom1.S
-	cp $< inst_rom.S
-	make
-
-inst_rom2: inst_rom2.S
-	cp $< inst_rom.S
-	make
-
-inst_rom3: inst_rom3.S
+inst_rom%: inst_rom%.S
 	cp $< inst_rom.S
 	make
 
