@@ -1,32 +1,32 @@
 `include "defines.v"
 
 module ex(
-        input                   rst,
+    input                   rst,
 
-        input wire[`AluOpBus]   aluop_i,
-        input wire[`AluSelBus]  alusel_i,
-        input wire[`RegBus]     reg1_i,
-        input wire[`RegBus]     reg2_i,
-        input wire[`RegAddrBus] wd_i,
-        input wire              wreg_i,
-        input wire[`RegBus]     hi_i,
-        input wire[`RegBus]     lo_i,
+    input wire[`AluOpBus]   aluop_i,
+    input wire[`AluSelBus]  alusel_i,
+    input wire[`RegBus]     reg1_i,
+    input wire[`RegBus]     reg2_i,
+    input wire[`RegAddrBus] wd_i,
+    input wire              wreg_i,
+    input wire[`RegBus]     hi_i,
+    input wire[`RegBus]     lo_i,
 
-        input wire[`RegBus]     wb_hi_i,
-        input wire[`RegBus]     wb_lo_i,
-        input wire              wb_whilo_i,
+    input wire[`RegBus]     wb_hi_i,
+    input wire[`RegBus]     wb_lo_i,
+    input wire              wb_whilo_i,
 
-        input wire[`RegBus]     mem_hi_i,
-        input wire[`RegBus]     mem_lo_i,
-        input wire              mem_whilo_i,
+    input wire[`RegBus]     mem_hi_i,
+    input wire[`RegBus]     mem_lo_i,
+    input wire              mem_whilo_i,
 
-        output reg[`RegAddrBus] wd_o,
-        output reg              wreg_o,
-        output reg[`RegBus]     wdata_o,
+    output reg[`RegAddrBus] wd_o,
+    output reg              wreg_o,
+    output reg[`RegBus]     wdata_o,
 
-        output reg[`RegBus]     hi_o,
-        output reg[`RegBus]     lo_o,
-        output reg              whilo_o
+    output reg[`RegBus]     hi_o,
+    output reg[`RegBus]     lo_o,
+    output reg              whilo_o
 );
 
     reg[`RegBus] logicout;
