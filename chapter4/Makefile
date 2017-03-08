@@ -12,6 +12,10 @@ export CROSS_COMPILE
 
 all: inst_rom.data
 
+inst_rom%: inst_rom%.S
+	cp $< inst_rom.S
+	make
+
 %.o: %.S
 	$(CC) -mips32 $< -o $@
 
