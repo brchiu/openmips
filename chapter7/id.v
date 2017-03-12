@@ -238,14 +238,14 @@ module id(
                                     instvalid   <= `InstValid;
                                 end
                                 `EXE_MULT: begin
-                                    wreg_o      <= `WriteEnable;
+                                    wreg_o      <= `WriteDisable;
                                     aluop_o     <= `EXE_MULT_OP;
                                     reg1_read_o <= 1'b1;
                                     reg2_read_o <= 1'b1;
                                     instvalid   <= `InstValid;
                                 end
                                 `EXE_MULTU: begin
-                                    wreg_o      <= `WriteEnable;
+                                    wreg_o      <= `WriteDisable;
                                     aluop_o     <= `EXE_MULTU_OP;
                                     reg1_read_o <= 1'b1;
                                     reg2_read_o <= 1'b1;
