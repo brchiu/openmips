@@ -26,7 +26,9 @@ module id(
     output reg[`RegBus]         reg1_o,
     output reg[`RegBus]         reg2_o,
     output reg[`RegAddrBus]     wd_o,
-    output reg                  wreg_o
+    output reg                  wreg_o,
+
+    output reg                  stallreq
 );
 
     wire[5:0] op    = inst_i[31:26];
@@ -50,6 +52,7 @@ module id(
             reg1_addr_o <= `NOPRegAddr;
             reg2_addr_o <= `NOPRegAddr;
             imm         <= 32'h0;
+            stallreq    <= `NoStop;
         end else begin
             aluop_o     <= `EXE_NOP_OP;
             alusel_o    <= `EXE_RES_NOP;
@@ -61,6 +64,7 @@ module id(
             reg1_addr_o <= inst_i[25:21]; // rs
             reg2_addr_o <= inst_i[20:16]; // rt
             imm         <= `ZeroWord;
+            stallreq    <= `NoStop;
 
             case (op)
                 `EXE_SPECIAL_INST: begin
@@ -90,7 +94,7 @@ module id(
                                     reg1_read_o <= 1'b1;
                                     reg2_read_o <= 1'b1;
                                     instvalid   <= `InstValid;
-                                end 
+                                end
                                 `EXE_NOR: begin
                                     wreg_o      <= `WriteEnable;
                                     aluop_o     <= `EXE_NOR_OP;
@@ -371,9 +375,41 @@ module id(
                             reg2_read_o <= 1'b1;
                             instvalid   <= `InstValid;
                         end
+                        `EXE_MADD: begin
+                            wreg_o      <= `WriteDisable;
+                            aluop_o     <= `EXE_MADD_OP;
+                            alusel_o    <= `EXE_RES_MUL;
+                            reg1_read_o <= 1'b1;
+                            reg2_read_o <= 1'b1;
+                            instvalid   <= `InstValid;
+                        end
+                        `EXE_MADDU: begin
+                            wreg_o      <= `WriteDisable;
+                            aluop_o     <= `EXE_MADDU_OP;
+                            alusel_o    <= `EXE_RES_MUL;
+                            reg1_read_o <= 1'b1;
+                            reg2_read_o <= 1'b1;
+                            instvalid   <= `InstValid;
+                        end
+                        `EXE_MSUB: begin
+                            wreg_o      <= `WriteDisable;
+                            aluop_o     <= `EXE_MSUB_OP;
+                            alusel_o    <= `EXE_RES_MUL;
+                            reg1_read_o <= 1'b1;
+                            reg2_read_o <= 1'b1;
+                            instvalid   <= `InstValid;
+                        end
+                        `EXE_MSUBU: begin
+                            wreg_o      <= `WriteDisable;
+                            aluop_o     <= `EXE_MSUBU_OP;
+                            alusel_o    <= `EXE_RES_MUL;
+                            reg1_read_o <= 1'b1;
+                            reg2_read_o <= 1'b1;
+                            instvalid   <= `InstValid;
+                        end
                         default: begin
                         end
-                    endcase 
+                    endcase
                 end //EXE_SPECIAL2_INST
                 default: begin
 

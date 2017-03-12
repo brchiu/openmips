@@ -1,3 +1,4 @@
+vlog ctrl.v
 vlog defines.v
 vlog ex_mem.v
 vlog ex.v
@@ -65,6 +66,10 @@ add wave -noupdate -format -literal -radix hex -label {ex0/logicout}         {/o
 add wave -noupdate -format -literal -radix hex -label {ex0/shiftres}         {/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/ex0/shiftres}
 add wave -noupdate -format -literal -radix hex -label {ex0/mulres}           {/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/ex0/mulres}
 add wave -noupdate -format -literal -radix hex -label {ex0/hilo_temp}        {/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/ex0/hilo_temp}
+add wave -noupdate -format -literal -radix hex -label {ex0/hilo_temp_o}      {/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/ex0/hilo_temp_o}
+add wave -noupdate -format -literal -radix hex -label {ex0/hilo_temp1}       {/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/ex0/hilo_temp1}
+add wave -noupdate -format -literal -radix hex -label {ex0/cnt_o}            {/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/ex0/cnt_o}
+add wave -noupdate -format -literal -radix hex -label {ex0/stallreq}         {/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/ex0/stallreq}
 
 add wave -noupdate -format -literal -radix hex -label {ex0/wd_o}             {/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/ex0/wd_o}
 add wave -noupdate -format -literal -radix hex -label {ex0/wreg_o}           {/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/ex0/wreg_o}
@@ -74,6 +79,9 @@ add wave -noupdate -format -literal -radix hex -label {ex0/whilo_o}          {/o
 add wave -noupdate -format -literal -radix hex -label {hilo_reg0/hi_o}       {/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/hilo_reg0/hi_o}
 add wave -noupdate -format -literal -radix hex -label {hilo_reg0/lo_o}       {/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/hilo_reg0/lo_o}
 
+add wave -noupdate -format -literal -radix hex -label {ctrl0/stallreq_from_id}  {/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/ctrl0/stallreq_from_id}
+add wave -noupdate -format -literal -radix hex -label {ctrl0/stallreq_from_ex}  {/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/ctrl0/stallreq_from_ex}
+add wave -noupdate -format -literal -radix hex -label {ctrl0/stall}          {/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/ctrl0/stall}
 
 run -all
 

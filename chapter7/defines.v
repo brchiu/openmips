@@ -14,6 +14,8 @@
 `define False_v         1'b0
 `define ChipEnable      1'b1
 `define ChipDisable     1'b0
+`define Stop            1'b1
+`define NoStop          1'b0
 
 //*******************************************
 `define EXE_NOP         6'b000000
@@ -64,6 +66,11 @@
 `define EXE_MFLO        6'b010010
 `define EXE_MTLO        6'b010011
 
+`define EXE_MADD        6'b000000
+`define EXE_MADDU       6'b000001
+`define EXE_MSUB        6'b000100
+`define EXE_MSUBU       6'b000101
+
 //AluOp
 `define EXE_NOP_OP      8'b00000000
 `define EXE_OR_OP       8'b00100101
@@ -97,6 +104,11 @@
 `define EXE_MUL_OP      8'b01010000 //TBC
 `define EXE_MULT_OP     8'b01010001 //TBC
 `define EXE_MULTU_OP    8'b01010010 //TBC
+
+`define EXE_MADD_OP     8'b01010011 //TBC
+`define EXE_MADDU_OP    8'b01010100 //TBC
+`define EXE_MSUB_OP     8'b01010101 //TBC
+`define EXE_MSUBU_OP    8'b01010110 //TBC
 
 //AluSel
 `define EXE_RES_NOP     3'b000
