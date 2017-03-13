@@ -14,9 +14,9 @@ module div(
     output reg          ready_o
 );
 
-    wire[`RegBus]   div_temp;
+    wire[32:0]      div_temp;
     reg[5:0]        cnt;
-    reg[`DoubleRegBus] dividend;
+    reg[64:0]       dividend;
     reg[1:0]        state;
     reg[`RegBus]    divisor;
     reg[`RegBus]    temp_op1;
@@ -29,6 +29,7 @@ module div(
             state   <= `DivFree;
             ready_o <= `DivResultNotReady;
             result_o <= {`ZeroWord, `ZeroWord};
+            dividend <= {0, `ZeroWord, `ZeroWord};
         end else begin
             case (state)
                 `DivFree: begin
@@ -39,17 +40,17 @@ module div(
                             state <= `DivOn;
                             cnt   <= 6'b000000;
                             if (signed_div_i == 1'b1 && opdata1_i[31] == 1'b1) begin
-                                temp_op1 <= ~opdata1_i  + 1;
+                                temp_op1 = ~opdata1_i  + 1;
                             end else begin
-                                temp_op1 <= opdata1_i;
+                                temp_op1 = opdata1_i;
                             end
                             if (signed_div_i == 1'b1 && opdata2_i[31] == 1'b1) begin
-                                temp_op2 <= ~opdata2_i + 1;
+                                temp_op2 = ~opdata2_i + 1;
                             end else begin
-                                temp_op2 <= opdata2_i;
+                                temp_op2 = opdata2_i;
                             end
-                            dividend <= {`ZeroWord, `ZeroWord};
-                            dividend[31:1] <= temp_op1;
+                            dividend = {`ZeroWord, `ZeroWord};
+                            dividend[32:1] <= temp_op1;
                             divisor <= temp_op2;
                         end
                     end else begin
@@ -74,10 +75,10 @@ module div(
                             cnt <= cnt + 1;
                         end else begin
                             if ((signed_div_i == 1'b1) && ((opdata1_i[31] ^ opdata2_i[31]) == 1'b1)) begin
-                                dividend[31:0] <= ~dividend[31:0] + 1;
+                                dividend[31:0] <= (~dividend[31:0] + 1);
                             end
                             if ((signed_div_i == 1'b1) && ((opdata1_i[31] ^ dividend[64]) == 1'b1)) begin
-                                dividend[64:33] <= ~dividend[64:33] + 1;
+                                dividend[64:33] <= (~dividend[64:33] + 1);
                             end
                             state <= `DivEnd;
                             cnt <= 6'b000000;
@@ -97,7 +98,7 @@ module div(
                     end
                 end
             endcase
-        end 
+        end
     end
 
 endmodule

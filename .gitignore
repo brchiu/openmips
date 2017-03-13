@@ -4,5 +4,6 @@ transcript
 *.om
 *.bin
 *.data
+*.bak
 inst_rom.S
 work/

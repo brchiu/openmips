@@ -1,5 +1,6 @@
 vlog ctrl.v
 vlog defines.v
+vlog div.v
 vlog ex_mem.v
 vlog ex.v
 vlog hilo_reg.v
@@ -83,6 +84,17 @@ add wave -noupdate -format -literal -radix hex -label {ctrl0/stallreq_from_id}  
 add wave -noupdate -format -literal -radix hex -label {ctrl0/stallreq_from_ex}  {/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/ctrl0/stallreq_from_ex}
 add wave -noupdate -format -literal -radix hex -label {ctrl0/stall}          {/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/ctrl0/stall}
 
+add wave -noupdate -format -literal -radix hex -label {div0/cnt}             {/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/div0/cnt}
+add wave -noupdate -format -literal -radix hex -label {div0/state}           {/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/div0/state}
+add wave -noupdate -format -literal -radix hex -label {div0/opdata1_i}       {/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/div0/opdata1_i}
+add wave -noupdate -format -literal -radix hex -label {div0/opdata2_i}       {/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/div0/opdata2_i}
+add wave -noupdate -format -literal -radix hex -label {div0/dividend}        {/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/div0/dividend}
+add wave -noupdate -format -literal -radix hex -label {div0/div_temp}        {/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/div0/div_temp}
+add wave -noupdate -format -literal -radix hex -label {div0/result_o}        {/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/div0/result_o}
+add wave -noupdate -format -literal -radix hex -label {div0/divisor}         {/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/div0/divisor}
+add wave -noupdate -format -literal -radix hex -label {div0/temp_op1}        {/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/div0/temp_op1}
+add wave -noupdate -format -literal -radix hex -label {div0/temp_op2}        {/openmips_min_sopc_tb/openmips_min_sopc0/openmips0/div0/temp_op2}
+
 run -all
 
-wave zoom range 0ps 600000ps
+wave zoom range 0ps 2000000ps

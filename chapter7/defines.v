@@ -17,6 +17,15 @@
 `define Stop            1'b1
 `define NoStop          1'b0
 
+`define DivFree         2'b00
+`define DivByZero       2'b01
+`define DivOn           2'b10
+`define DivEnd          2'b11
+`define DivResultReady  1'b1
+`define DivResultNotReady 1'b0
+`define DivStart        1'b1
+`define DivStop         1'b0
+
 //*******************************************
 `define EXE_NOP         6'b000000
 
@@ -71,6 +80,9 @@
 `define EXE_MSUB        6'b000100
 `define EXE_MSUBU       6'b000101
 
+`define EXE_DIV         6'b011010
+`define EXE_DIVU        6'b011011
+
 //AluOp
 `define EXE_NOP_OP      8'b00000000
 `define EXE_OR_OP       8'b00100101
@@ -109,6 +121,9 @@
 `define EXE_MADDU_OP    8'b01010100 //TBC
 `define EXE_MSUB_OP     8'b01010101 //TBC
 `define EXE_MSUBU_OP    8'b01010110 //TBC
+
+`define EXE_DIV_OP      8'b01010111 //TBC
+`define EXE_DIVU_OP     8'b01011000 //TBC
 
 //AluSel
 `define EXE_RES_NOP     3'b000
